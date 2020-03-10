@@ -8,7 +8,7 @@ class PersonTest extends GroovyTestCase {
     }
 
     void tearDown() {
-
+        super.tearDown()
     }
 
     void testGetFirstName() {
