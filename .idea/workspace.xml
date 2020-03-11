@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fdbb94a0-bbf3-414a-948b-865bc9369a35" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/AddressBook/AddressBookControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/AddressBook/AddressBookTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/AddressBook/FileSystemTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/GUI/AddressBookGUITest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/GUI/PersonDialogTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/GUI/SpringUtilitiesTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/AddressBook/PersonTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/AddressBook/PersonTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/tests/AddressBook/PersonTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/AddressBook/PersonTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/tests/AddressBook/PersonTestGroovy.groovy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +18,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -69,7 +64,7 @@
       <recent name="groovy.util.GroovyTestCase" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in addressbook">
+  <component name="RunManager" selected="JUnit.PersonTest">
     <configuration name="AddressBookGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI.AddressBookGUI" />
       <module name="addressbook" />
@@ -117,8 +112,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in addressbook" />
         <item itemvalue="JUnit.PersonTest" />
+        <item itemvalue="JUnit.All in addressbook" />
         <item itemvalue="Application.AddressBookGUI" />
       </list>
     </recent_temporary>
@@ -157,22 +152,26 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="577" y="327" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1581544654024" />
-    <state width="1638" height="175" key="GridCell.Tab.0.bottom" timestamp="1581547414232">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state width="1878" height="308" key="GridCell.Tab.0.bottom" timestamp="1583956879349">
+      <screen x="0" y="23" width="1920" height="1177" />
     </state>
     <state width="1638" height="175" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1581547414232" />
-    <state width="1638" height="175" key="GridCell.Tab.0.center" timestamp="1581547414231">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state width="1878" height="308" key="GridCell.Tab.0.bottom/0.23.1920.1177@0.23.1920.1177" timestamp="1583956879349" />
+    <state width="1878" height="308" key="GridCell.Tab.0.center" timestamp="1583956879348">
+      <screen x="0" y="23" width="1920" height="1177" />
     </state>
     <state width="1638" height="175" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1581547414231" />
-    <state width="1638" height="175" key="GridCell.Tab.0.left" timestamp="1581547414231">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state width="1878" height="308" key="GridCell.Tab.0.center/0.23.1920.1177@0.23.1920.1177" timestamp="1583956879348" />
+    <state width="1878" height="308" key="GridCell.Tab.0.left" timestamp="1583956879348">
+      <screen x="0" y="23" width="1920" height="1177" />
     </state>
     <state width="1638" height="175" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1581547414231" />
-    <state width="1638" height="175" key="GridCell.Tab.0.right" timestamp="1581547414232">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state width="1878" height="308" key="GridCell.Tab.0.left/0.23.1920.1177@0.23.1920.1177" timestamp="1583956879348" />
+    <state width="1878" height="308" key="GridCell.Tab.0.right" timestamp="1583956879349">
+      <screen x="0" y="23" width="1920" height="1177" />
     </state>
     <state width="1638" height="175" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1581547414232" />
+    <state width="1878" height="308" key="GridCell.Tab.0.right/0.23.1920.1177@0.23.1920.1177" timestamp="1583956879349" />
     <state x="354" y="145" key="SettingsEditor" timestamp="1581544416382">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -189,9 +188,9 @@
     <state x="1224" y="329" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.23.3440.1273@0.23.3440.1273" timestamp="1583802078705" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/addressbook$PersonTest.ic" NAME="PersonTest Coverage Results" MODIFIED="1581547414207" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/addressbook$All_in_addressbook.ic" NAME="All in addressbook Coverage Results" MODIFIED="1583802206105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/addressbook$PersonTest.ic" NAME="PersonTest Coverage Results" MODIFIED="1583956879326" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>AddressBook.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/addressbook$All_in_addressbook.ic" NAME="All in addressbook Coverage Results" MODIFIED="1583802206105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

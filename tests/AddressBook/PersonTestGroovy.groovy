@@ -2,7 +2,7 @@ package AddressBook
 
 import AddressBook.Person
 
-class PersonTest extends GroovyTestCase {
+class PersonTestGroovy extends GroovyTestCase {
     void setUp() {
         super.setUp()
     }
