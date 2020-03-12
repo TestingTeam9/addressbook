@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.time.Duration;
 
 class AddressBookControllerTest {
   // creates the AddressBookController instance
@@ -53,6 +54,19 @@ class AddressBookControllerTest {
     // once we remove the entry from the AddressBook, it is removed from the array of Persons, so its length is 0
     testAddressBookController.addressBook.remove(0);
     assertEquals(noEntries, testAddressBookController.addressBook.getPersons().length);
+  }
+
+  @Test
+  void removeTimeout() {
+    // use declared address book
+    testAddressBookController.add(testPerson);
+
+    //test that the time to remove an entry from the address book is less than 2ms
+    // when it is called from the AddressBookController class
+    assertTimeout(Duration.ofMillis(2), () -> {
+      // remove the person
+      testAddressBookController.remove(0);
+    });
   }
 
   @Test
