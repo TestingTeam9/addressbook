@@ -2,6 +2,7 @@ package AddressBook;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.Duration;
 import org.junit.jupiter.api.Test;
 
 class AddressBookTest {
@@ -33,14 +34,27 @@ class AddressBookTest {
     AddressBook addressBook = new AddressBook();
 
     // add a person
-    addressBook.add(new Person("firstName", "lastName", "address",
-            "city", "state", "zip", "phone"));
+    addressBook.add(new Person("Robert", "Karish", "12345 Landing Circle",
+            "Bonita Springs", "FL", "12345", "239-123-1466"));
 
     // get expected person
     final Person expected = addressBook.get(0);
 
     // make sure the person is not null
     assertNotNull(expected);
+  }
+
+  @Test
+  void addTimeout() {
+    // create address book
+    AddressBook addressBook = new AddressBook();
+
+    // timeout if add operation takes longer than 10 milliseconds
+    assertTimeout(Duration.ofMillis(2), () -> {
+      // add a person
+      addressBook.add(new Person("Robert", "Karish", "12345 Landing Circle",
+              "Bonita Springs", "FL", "12345", "239-123-1466"));
+    });
   }
 
   @Test
