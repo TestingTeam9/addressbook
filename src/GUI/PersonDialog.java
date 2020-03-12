@@ -1,7 +1,7 @@
 package GUI;
 
 import AddressBook.Person;
-import com.sun.istack.internal.Nullable;
+//import com.sun.istack.internal.Nullable;
 
 import javax.swing.*;
 import java.awt.*;
@@ -110,8 +110,8 @@ public class PersonDialog extends JDialog {
         setLocation((parent.getWidth() - getWidth()) / 2, (parent.getHeight() - getHeight()) / 2);
     }
 
-  
-    public PersonDialog(Frame parent, @Nullable Person person) {
+    // public PersonDialog(Frame parent, @Nullable Person person)
+    public PersonDialog(Frame parent, Person person) {
         this(parent);
         if (person == null)
             return;
