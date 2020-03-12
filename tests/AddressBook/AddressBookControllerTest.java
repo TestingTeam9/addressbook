@@ -54,6 +54,19 @@ class AddressBookControllerTest {
     testAddressBookController.addressBook.remove(0);
     assertEquals(noEntries, testAddressBookController.addressBook.getPersons().length);
   }
+  
+  @Test
+  void removeTimeout() {
+    // use declared address book
+    testAddressBookController.add(testPerson);
+
+    //test that the time to remove an entry from the address book is less than 2ms
+    // when it is called from the AddressBookController class
+    assertTimeout(Duration.ofMillis(2), () -> {
+      // remove the person
+      testAddressBookController.remove(0);
+    });
+  }
 
   @Test
   void get() {
