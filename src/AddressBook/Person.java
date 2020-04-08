@@ -4,17 +4,16 @@ import java.util.regex.Pattern;
 
 
 public class Person {
-  
-    public static final String[] fields =
-            {
-                    "Last Name",
-                    "First Name",
-                    "Address",
-                    "City",
-                    "State",
-                    "ZIP",
-                    "Phone",
-            };
+
+    public static final String[] fields = {
+            "Last Name",
+            "First Name",
+            "Address",
+            "City",
+            "State",
+            "ZIP",
+            "Phone",
+    };
 
     private String firstName;
     private String lastName;
@@ -24,7 +23,7 @@ public class Person {
     private String zip;
     private String phone;
 
- 
+
     public Person(String firstName, String lastName, String address, String city, String state, String zip, String phone) {
         if (firstName == null || firstName.isEmpty())
             throw new IllegalArgumentException("First name cannot be empty");
@@ -44,22 +43,22 @@ public class Person {
         return firstName;
     }
 
-  
+
     public String getLastName() {
         return lastName;
     }
 
-    
+
     public String getAddress() {
         return address;
     }
 
-  
+
     public String getCity() {
         return city;
     }
 
-   
+
     public String getState() {
         return state;
     }
@@ -82,13 +81,13 @@ public class Person {
         return phone;
     }
 
-   
+
     @Override
     public String toString() {
         return lastName + ", " + firstName;
     }
 
-  
+
     public boolean containsString(String findMe) {
         Pattern p = Pattern.compile(Pattern.quote(findMe), Pattern.CASE_INSENSITIVE);
         return p.matcher(firstName).find()
@@ -100,7 +99,7 @@ public class Person {
                 || p.matcher(phone).find();
     }
 
-   
+
     public String getField(int field) {
         switch (field) {
             case 0:

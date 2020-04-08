@@ -1,4 +1,4 @@
-package AddressBookTests;
+package AddressBook;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,7 +13,20 @@ public class PersonTest {
     void setUp() {
         // Make a new Person before each test case
         p = new Person("Robert", "Karish", "12345 Bonita Landing Circle", "Bonita Springs", "FL", "12345", "239-821-1466");
+        IllegalArgumentException thrown;
 
+        // Branch coverage of the Person constructor
+        thrown = assertThrows(IllegalArgumentException.class, () -> new Person(null, "Karish", null, null, null, null, null));
+        assertEquals("First name cannot be empty", thrown.getMessage());
+
+        thrown = assertThrows(IllegalArgumentException.class, () -> new Person("Robert", null, null, null, null, null, null));
+        assertEquals("Last name cannot be empty", thrown.getMessage());
+
+        thrown = assertThrows(IllegalArgumentException.class, () -> new Person("", "Karish", null, null, null, null, null));
+        assertEquals("First name cannot be empty", thrown.getMessage());
+
+        thrown = assertThrows(IllegalArgumentException.class, () -> new Person("Robert", "", null, null, null, null, null));
+        assertEquals("Last name cannot be empty", thrown.getMessage());
     }
 
     @AfterEach
@@ -80,15 +93,28 @@ public class PersonTest {
     @Test
     void containsStringTest() {
         // Test the containsString method
-        assertTrue(p.containsString("Robert"));
+        assertFalse(p.containsString("test"));
         assertTrue(p.containsString("Karish"));
+        assertTrue(p.containsString("Robert"));
         assertTrue(p.containsString("12345 Bonita Landing Circle"));
+        assertTrue(p.containsString("Bonita Springs"));
+        assertTrue(p.containsString("FL"));
+        assertTrue(p.containsString("12345"));
+        assertTrue(p.containsString("239-821-1466"));
     }
 
     @Test
     void getFieldTest() {
         // Test the getField method
-        String name = "Robert";
-        assertEquals(name, p.getField(1));
+        assertEquals("Karish", p.getField(0));
+        assertEquals("Robert", p.getField(1));
+        assertEquals("12345 Bonita Landing Circle", p.getField(2));
+        assertEquals("Bonita Springs", p.getField(3));
+        assertEquals("FL", p.getField(4));
+        assertEquals("12345", p.getField(5));
+        assertEquals("239-821-1466", p.getField(6));
+
+        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> p.getField(7));
+        assertEquals("Field number out of bounds", thrown.getMessage());
     }
 }

@@ -1,4 +1,4 @@
-package AddressBookTests;
+package AddressBook;
 
 import java.io.File;
 import java.io.FileNotFoundException;
