@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.time.Duration;
 
 class AddressBookControllerTest {
   // creates the AddressBookController instance
@@ -54,7 +55,7 @@ class AddressBookControllerTest {
     testAddressBookController.addressBook.remove(0);
     assertEquals(noEntries, testAddressBookController.addressBook.getPersons().length);
   }
-  
+
   @Test
   void removeTimeout() {
     // use declared address book
@@ -102,4 +103,5 @@ class AddressBookControllerTest {
   @Test
   void getModel() {
   }
+
 }

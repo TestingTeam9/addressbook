@@ -2,9 +2,18 @@ package AddressBook;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.Duration;
+
+import org.junit.Rule;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
+import org.junit.rules.ExpectedException;
 
 class AddressBookTest {
+
+  @Rule
+  public ExpectedException expectedException = ExpectedException.none();
+
   @Test
   void getPersons() {
     // create address book
@@ -12,26 +21,19 @@ class AddressBookTest {
 
     // add two persons
     addressBook.add(new Person("firstName1", "lastName1", "address1",
-        "city1", "state1", "zip1", "phone1"));
+            "city1", "state1", "zip1", "phone1"));
 
     addressBook.add(new Person("firstName2", "lastName2", "address2",
-        "city2", "state2", "zip2", "phone2"));
+            "city2", "state2", "zip2", "phone2"));
 
     // create array of expected persons
-    final Person[] expected = new Person[]
-        {
-            new Person("firstName1", "lastName1", "address1", "city1",
-                "state1", "zip1", "phone1"),
-
-            new Person("firstName2", "lastName2", "address2", "city2",
-                "state2", "zip2", "phone2")
-        };
+    final Person[] expected = new Person[] { addressBook.get(0), addressBook.get(1) };
 
     // get actual array of persons
     final Person[] actual = addressBook.getPersons();
 
     // compare the actual to the expected
-    assertEquals(actual, expected);
+    assertArrayEquals(actual, expected);
   }
 
   @Test
@@ -40,8 +42,8 @@ class AddressBookTest {
     AddressBook addressBook = new AddressBook();
 
     // add a person
-    addressBook.add(new Person("firstName", "lastName", "address",
-        "city", "state", "zip", "phone"));
+    addressBook.add(new Person("Robert", "Karish", "12345 Landing Circle",
+            "Bonita Springs", "FL", "12345", "239-123-1466"));
 
     // get expected person
     final Person expected = addressBook.get(0);
@@ -51,17 +53,30 @@ class AddressBookTest {
   }
 
   @Test
+  void addTimeout() {
+    // create address book
+    AddressBook addressBook = new AddressBook();
+
+    // timeout if add operation takes longer than 10 milliseconds
+    assertTimeout(Duration.ofMillis(2), () -> {
+      // add a person
+      addressBook.add(new Person("Robert", "Karish", "12345 Landing Circle",
+              "Bonita Springs", "FL", "12345", "239-123-1466"));
+    });
+  }
+
+  @Test
   void set() {
     // create address book
     AddressBook addressBook = new AddressBook();
 
     // add a person
     addressBook.add(new Person("firstName", "lastName", "address",
-        "city", "state", "zip", "phone"));
+            "city", "state", "zip", "phone"));
 
     // create an expected person
     final Person expected = new Person("newFirstName", "newLastName",
-        "newAddress", "newCity", "newState", "newZip", "newPhone");
+            "newAddress", "newCity", "newState", "newZip", "newPhone");
 
     // set original person to expected person
     addressBook.set(0, expected);
@@ -80,16 +95,16 @@ class AddressBookTest {
 
     // add a person
     addressBook.add(new Person("firstName", "lastName", "address",
-        "city", "state", "zip", "phone"));
+            "city", "state", "zip", "phone"));
 
     // remove person
     addressBook.remove(0);
 
-    // get actual person
-    final Person actual = addressBook.get(0);
+    // get actual length of persons
+    final int actual = addressBook.getPersons().length;
 
     // make sure the person is null
-    assertNull(actual);
+    assertEquals(0, actual);
   }
 
   @Test
@@ -99,7 +114,7 @@ class AddressBookTest {
 
     // add a person
     addressBook.add(new Person("firstName", "lastName", "address",
-        "city", "state", "zip", "phone"));
+            "city", "state", "zip", "phone"));
 
     // get actual person
     final Person actual = addressBook.get(0);
@@ -115,10 +130,13 @@ class AddressBookTest {
 
     // add a person
     addressBook.add(new Person("firstName", "lastName", "address",
-        "city", "state", "zip", "phone"));
+            "city", "state", "zip", "phone"));
 
     // create expected person array
     final Person[] expected = new Person[] { };
+
+    //create expected null person for branch coverage
+    final Person[] actualNull = null;
 
     // clear person array
     addressBook.clear();
@@ -127,7 +145,7 @@ class AddressBookTest {
     final Person[] actual = addressBook.getPersons();
 
     // compare the actual to the expected
-    assertEquals(actual, expected);
+    assertArrayEquals(actual, expected);
   }
 
   @Test
@@ -137,7 +155,7 @@ class AddressBookTest {
 
     // add a person
     addressBook.add(new Person("firstName", "lastName", "address",
-        "city", "state", "zip", "phone"));
+            "city", "state", "zip", "phone"));
 
     // create expected row count
     final int expected = 1;
@@ -156,7 +174,7 @@ class AddressBookTest {
 
     // add a person
     addressBook.add(new Person("firstName", "lastName", "address",
-        "city", "state", "zip", "phone"));
+            "city", "state", "zip", "phone"));
 
     // create expected column count
     final int expected = 7;
@@ -175,7 +193,7 @@ class AddressBookTest {
 
     // add a person
     addressBook.add(new Person("firstName", "lastName", "address",
-        "city", "state", "zip", "phone"));
+            "city", "state", "zip", "phone"));
 
     // get actual value
     final Object actual = addressBook.getValueAt(0, 0);
@@ -191,7 +209,7 @@ class AddressBookTest {
 
     // add a person
     addressBook.add(new Person("firstName", "lastName", "address",
-        "city", "state", "zip", "phone"));
+            "city", "state", "zip", "phone"));
 
     // get actual value
     final String actual = addressBook.getColumnName(0);
