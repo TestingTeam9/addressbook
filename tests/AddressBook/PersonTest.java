@@ -1,4 +1,4 @@
-package AddressBook;
+package AddressBookTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -80,7 +80,9 @@ public class PersonTest {
     @Test
     void containsStringTest() {
         // Test the containsString method
-        assertEquals(true, p.containsString("Robert"));
+        assertTrue(p.containsString("Robert"));
+        assertTrue(p.containsString("Karish"));
+        assertTrue(p.containsString("12345 Bonita Landing Circle"));
     }
 
     @Test
