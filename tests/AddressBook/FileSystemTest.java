@@ -1,6 +1,7 @@
 package AddressBook;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,8 +14,9 @@ import java.sql.SQLException;
 class FileSystemTest {
 
   AddressBook testAddressBook = new AddressBook();
-  AddressBookController testABC = new AddressBookController(testAddressBook);
+  AddressBook mockAddressBook = mock(AddressBook.class);
   Person testPerson = new Person("One", "tester", "Street", "Cape Coral", "FL", "12345", "2341112299");
+  Person mockPerson = mock(Person.class);
 
   @BeforeEach
   void setUp() {
@@ -48,6 +50,23 @@ class FileSystemTest {
   }
 
   @Test
+  void readFileMock() {
+    // create mocks
+    FileSystem fileSystem = new FileSystem();
+    File testFile = new File("testFile");
+
+    // test adding, saving and reading with the mock objects
+    mockAddressBook.add(mockPerson);
+    assertDoesNotThrow(() -> fileSystem.saveFile(mockAddressBook, testFile));
+    assertDoesNotThrow(() -> fileSystem.readFile(mockAddressBook, testFile));
+
+    // verify
+    verify(mockAddressBook).add(mockPerson);
+    assertDoesNotThrow(() -> verify(fileSystem).saveFile(mockAddressBook, testFile));
+    assertDoesNotThrow(() -> verify(fileSystem).readFile(mockAddressBook, testFile));
+  }
+
+  @Test
   void saveFile() {
 
     FileSystem fileSystem_save = new FileSystem();
@@ -59,6 +78,17 @@ class FileSystemTest {
 
     assertDoesNotThrow(() -> fileSystem_save.saveFile(testAddressBook, testFile_save));
     assertTrue(true, fileSystem_save.toString());
+  }
 
+  @Test
+  void saveFileMock() {
+    FileSystem fileSystem = new FileSystem();
+    File testFile_save = new File("testSaveFile");
+
+    // test saving
+    assertDoesNotThrow(() -> fileSystem.saveFile(mockAddressBook, testFile_save));
+
+    // verify
+    assertDoesNotThrow(() -> verify(fileSystem).saveFile(mockAddressBook, testFile_save));
   }
 }
