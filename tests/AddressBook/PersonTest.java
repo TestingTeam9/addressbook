@@ -94,6 +94,7 @@ public class PersonTest {
     @Test
     void containsStringTest() {
         // Test the containsString method
+        assertFalse(p.containsString("test"));
         assertTrue(p.containsString("Robert"));
         assertTrue(p.containsString("Karish"));
         assertTrue(p.containsString("12345 Bonita Landing Circle"));
