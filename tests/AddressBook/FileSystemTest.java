@@ -14,13 +14,10 @@ import java.sql.SQLException;
 class FileSystemTest {
 
   AddressBook testAddressBook = new AddressBook();
-  AddressBook mockAddressBook = mock(AddressBook.class);
   Person testPerson = new Person("One", "tester", "Street", "Cape Coral", "FL", "12345", "2341112299");
-  Person mockPerson = mock(Person.class);
 
   @BeforeEach
   void setUp() {
-
   }
 
   @AfterEach
@@ -50,25 +47,7 @@ class FileSystemTest {
   }
 
   @Test
-  void readFileMock() {
-    // create mocks
-    FileSystem fileSystem = new FileSystem();
-    File testFile = new File("testFile");
-
-    // test adding, saving and reading with the mock objects
-    mockAddressBook.add(mockPerson);
-    assertDoesNotThrow(() -> fileSystem.saveFile(mockAddressBook, testFile));
-    assertDoesNotThrow(() -> fileSystem.readFile(mockAddressBook, testFile));
-
-    // verify
-    verify(mockAddressBook).add(mockPerson);
-    assertDoesNotThrow(() -> verify(fileSystem).saveFile(mockAddressBook, testFile));
-    assertDoesNotThrow(() -> verify(fileSystem).readFile(mockAddressBook, testFile));
-  }
-
-  @Test
   void saveFile() {
-
     FileSystem fileSystem_save = new FileSystem();
     File testFile_save = new File("testSaveFile");
 
@@ -85,10 +64,12 @@ class FileSystemTest {
     FileSystem fileSystem = new FileSystem();
     File testFile_save = new File("testSaveFile");
 
-    // test saving
-    assertDoesNotThrow(() -> fileSystem.saveFile(mockAddressBook, testFile_save));
+    // create mocks
+    AddressBook mockAddressBook = mock(AddressBook.class);
+    Person mockPerson = mock(Person.class);
 
-    // verify
-    assertDoesNotThrow(() -> verify(fileSystem).saveFile(mockAddressBook, testFile_save));
+    // test saving. Return a mock person array when getPersons is called
+    when(mockAddressBook.getPersons()).thenReturn(new Person[] {mockPerson});
+    assertDoesNotThrow(() -> fileSystem.saveFile(mockAddressBook, testFile_save));
   }
 }
