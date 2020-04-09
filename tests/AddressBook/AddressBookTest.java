@@ -3,9 +3,16 @@ package AddressBook;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.Duration;
+import org.junit.Rule;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
+import org.junit.rules.ExpectedException;
 
 class AddressBookTest {
+
+  @Rule
+  public ExpectedException expectedException = ExpectedException.none();
+
   @Test
   void getPersons() {
     // create address book
@@ -126,6 +133,9 @@ class AddressBookTest {
 
     // create expected person array
     final Person[] expected = new Person[] { };
+
+    //create expected null person for branch coverage
+    final Person[] actualNull = null;
 
     // clear person array
     addressBook.clear();
