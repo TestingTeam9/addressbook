@@ -61,4 +61,17 @@ class FileSystemTest {
     assertTrue(true, fileSystem_save.toString());
 
   }
+  
+  @Test
+  void saveFileStub() {
+    //create stub person
+    Person stubPerson;
+
+    // adds hardcoded data to the stub
+    stubPerson = new Person("stubName", "stubLast", "1111 Stub Ln", "Stub City", "ST", "12390", "2");
+
+    //assert that the added Person is present in the AddressBook
+    mockAddressBook.add(stubPerson);
+    assertEquals(mockAddressBook.get(0).getFirstName(), stubPerson.getField(1));
+  }
 }
