@@ -14,6 +14,20 @@ public class PersonTest {
         // Make a new Person before each test case
         p = new Person("Robert", "Karish", "12345 Bonita Landing Circle", "Bonita Springs", "FL", "12345", "239-821-1466");
         Person failedPerson;
+        IllegalArgumentException thrown;
+
+        // Branch coverage of the Person constructor
+        thrown = assertThrows(IllegalArgumentException.class, () -> new Person(null, "Karish", null, null, null, null, null));
+        assertEquals("First name cannot be empty", thrown.getMessage());
+
+        thrown = assertThrows(IllegalArgumentException.class, () -> new Person("Robert", null, null, null, null, null, null));
+        assertEquals("Last name cannot be empty", thrown.getMessage());
+
+        thrown = assertThrows(IllegalArgumentException.class, () -> new Person("", "Karish", null, null, null, null, null));
+        assertEquals("First name cannot be empty", thrown.getMessage());
+
+        thrown = assertThrows(IllegalArgumentException.class, () -> new Person("Robert", "", null, null, null, null, null));
+        assertEquals("Last name cannot be empty", thrown.getMessage());
     }
 
     @AfterEach

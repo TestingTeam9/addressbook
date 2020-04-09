@@ -3,7 +3,6 @@ package AddressBook;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.Duration;
-
 import org.junit.Rule;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
