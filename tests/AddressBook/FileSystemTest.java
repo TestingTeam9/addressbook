@@ -1,6 +1,7 @@
 package AddressBook;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,12 +14,10 @@ import java.sql.SQLException;
 class FileSystemTest {
 
   AddressBook testAddressBook = new AddressBook();
-  AddressBookController testABC = new AddressBookController(testAddressBook);
   Person testPerson = new Person("One", "tester", "Street", "Cape Coral", "FL", "12345", "2341112299");
 
   @BeforeEach
   void setUp() {
-
   }
 
   @AfterEach
@@ -49,7 +48,6 @@ class FileSystemTest {
 
   @Test
   void saveFile() {
-
     FileSystem fileSystem_save = new FileSystem();
     File testFile_save = new File("testSaveFile");
 
@@ -59,6 +57,19 @@ class FileSystemTest {
 
     assertDoesNotThrow(() -> fileSystem_save.saveFile(testAddressBook, testFile_save));
     assertTrue(true, fileSystem_save.toString());
+  }
 
+  @Test
+  void saveFileMock() {
+    FileSystem fileSystem = new FileSystem();
+    File testFile_save = new File("testSaveFile");
+
+    // create mocks
+    AddressBook mockAddressBook = mock(AddressBook.class);
+    Person mockPerson = mock(Person.class);
+
+    // test saving. Return a mock person array when getPersons is called
+    when(mockAddressBook.getPersons()).thenReturn(new Person[] {mockPerson});
+    assertDoesNotThrow(() -> fileSystem.saveFile(mockAddressBook, testFile_save));
   }
 }
