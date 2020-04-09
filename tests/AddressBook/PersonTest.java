@@ -120,6 +120,9 @@ public class PersonTest {
         assertEquals(state, p.getField(4));
         assertEquals(zip, p.getField(5));
         assertEquals(phone, p.getField(6));
+
+        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> p.getField(7));
+        assertEquals("Field number out of bounds", thrown.getMessage());
     }
 
     @Test
