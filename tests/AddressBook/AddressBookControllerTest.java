@@ -7,6 +7,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.time.Duration;
 
 class AddressBookControllerTest {
@@ -89,15 +91,25 @@ class AddressBookControllerTest {
   }
 
   @Test
-  void open() {
+  void open() throws FileNotFoundException, SQLException {
     // in order to test open, we are testing the FileSystem methods as well, which require an AddressBook and a File to
     // save the changes
     AddressBook testBook = new AddressBook();
     testBook.add(testPerson);
+
+    File file = new File("testFile");
+    testAddressBookController.addressBook = testBook;
+    testAddressBookController.open(file);
   }
 
   @Test
-  void save() {
+  void save() throws SQLException {
+    AddressBook testBook = new AddressBook();
+    testBook.add(testPerson);
+
+    File file = new File("testSaveFile");
+
+    testAddressBookController.save(file);
   }
 
   @Test
