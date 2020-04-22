@@ -145,6 +145,9 @@ class AddressBookTest {
 
     // compare the actual to the expected
     assertArrayEquals(actual, expected);
+
+    // clear the addressbook again for branch coverage
+    addressBook.clear();
   }
 
   @Test
