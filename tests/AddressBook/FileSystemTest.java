@@ -38,12 +38,20 @@ class FileSystemTest {
     });
 
     File testFile = new File("testFile");
+
     assertDoesNotThrow(() -> fileSystem.saveFile(testAddressBook, testFile));
 
     assertDoesNotThrow(() -> fileSystem.readFile(testAddressBook, testFile));
 
     assertEquals("File Not Found", exception_fileNotFound.getMessage());
     assertEquals("SQL Exception", exception_SQLException.getMessage());
+
+    try {
+      File noFile = new File("");
+      fileSystem.readFile(testAddressBook, noFile);
+    } catch (Exception e) {
+      assertEquals("java.io.FileNotFoundException", e.toString());
+    }
   }
 
   @Test
