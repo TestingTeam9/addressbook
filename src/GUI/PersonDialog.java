@@ -141,7 +141,7 @@ public class PersonDialog extends JDialog {
         String phoneRegex = "\\d{10}|(?:\\d{3}-){2}\\d{4}|\\(\\d{3}\\)\\d{3}-?\\d{4}";
         String zipRegex = "\\d{5}(-\\d{4})?";
         if (firstName != null && lastName != null && !firstName.getText().isEmpty() && !lastName.getText().isEmpty()
-            & phone.getText().matches(phoneRegex) & zip.getText().matches(zipRegex)) {
+            && phone.getText().matches(phoneRegex) && zip.getText().matches(zipRegex)) {
             return new Person(firstName.getText(),
                     lastName.getText(),
                     address.getText(),
@@ -150,8 +150,20 @@ public class PersonDialog extends JDialog {
                     zip.getText(),
                     phone.getText());
         } else {
-            JOptionPane.showMessageDialog(frame,
-                    "Invalid phone or invalid zip code or first name empty or last name empty.");
+            if (!phone.getText().matches(phoneRegex)) {
+                JOptionPane.showMessageDialog(frame,
+                        "Invalid phone.");
+            } else if (!zip.getText().matches(zipRegex)) {
+                JOptionPane.showMessageDialog(frame,
+                        "Invalid zip.");
+            } else if (firstName == null || firstName.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(frame,
+                        "Invalid first name.");
+            } else if (lastName == null || lastName.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(frame,
+                        "Invalid last name.");
+            }
+
             return null;
         }
     }
