@@ -11,11 +11,12 @@ import java.util.regex.*;
 
 
 public class PersonDialog extends JDialog {
+
     public enum Result {
         OK,
         CANCEL,
     }
-
+    private Frame frame;
     private Result result;
     private JTextField firstName;
     private JTextField lastName;
@@ -27,9 +28,9 @@ public class PersonDialog extends JDialog {
 
   
     public PersonDialog(Frame parent) {
-        
         super(parent);
 
+        frame = parent;
         
         JLabel l;
         AtomicReference<JPanel> p = new AtomicReference<>(new JPanel(new SpringLayout()));
@@ -149,6 +150,8 @@ public class PersonDialog extends JDialog {
                     zip.getText(),
                     phone.getText());
         } else {
+            JOptionPane.showMessageDialog(frame,
+                    "Invalid phone or zip code.");
             return null;
         }
     }
