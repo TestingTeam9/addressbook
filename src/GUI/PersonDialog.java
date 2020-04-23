@@ -7,6 +7,7 @@ import AddressBook.Person;
 import javax.swing.*;
 import java.awt.*;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.regex.*;
 
 
 public class PersonDialog extends JDialog {
@@ -135,7 +136,11 @@ public class PersonDialog extends JDialog {
 
  
     public Person getPerson() {
-        if (firstName != null && lastName != null && !firstName.getText().isEmpty() && !lastName.getText().isEmpty()) {
+        // Regex for phone and zip for input validation
+        String phoneRegex = "\\d{10}|(?:\\d{3}-){2}\\d{4}|\\(\\d{3}\\)\\d{3}-?\\d{4}";
+        String zipRegex = "\\d{5}(-\\d{4})?";
+        if (firstName != null && lastName != null && !firstName.getText().isEmpty() && !lastName.getText().isEmpty()
+            & phone.getText().matches(phoneRegex) & zip.getText().matches(zipRegex)) {
             return new Person(firstName.getText(),
                     lastName.getText(),
                     address.getText(),
