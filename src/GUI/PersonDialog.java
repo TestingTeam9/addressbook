@@ -151,7 +151,7 @@ public class PersonDialog extends JDialog {
                     phone.getText());
         } else {
             JOptionPane.showMessageDialog(frame,
-                    "Invalid phone or zip code.");
+                    "Invalid phone or invalid zip code or first name empty or last name empty.");
             return null;
         }
     }
