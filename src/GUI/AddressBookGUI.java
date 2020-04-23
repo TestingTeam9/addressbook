@@ -18,6 +18,7 @@ import java.util.regex.Pattern;
 
 public class AddressBookGUI extends JFrame {
 
+    // Create the GUI
     private static void createAndShowGUI() {
         AddressBook addressBook = new AddressBook();
         AddressBookController controller = new AddressBookController(addressBook);
@@ -25,16 +26,19 @@ public class AddressBookGUI extends JFrame {
         gui.setVisible(true);
     }
 
+    // Main function, entry point of the program
     public static void main(String[] args) throws ClassNotFoundException {
         Class.forName("org.sqlite.JDBC");
         SwingUtilities.invokeLater(() -> createAndShowGUI());
     }
 
-
+    // AddressBook and AddressBookController
     private final AddressBookController controller;
     private final AddressBook addressBook;
+
     private final JTable nameList;
     private final TableRowSorter<AddressBook> tableRowSorter;
+    // Objects for the GUI
     private final JButton addButton = new JButton("Add...");
     private final JButton editButton = new JButton("Edit...");
     private final JButton deleteButton = new JButton("Delete");

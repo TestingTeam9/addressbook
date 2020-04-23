@@ -23,7 +23,7 @@ public class Person {
     private String zip;
     private String phone;
 
-
+    // Constructor for the person class, first and last name cannot be empty or null
     public Person(String firstName, String lastName, String address, String city, String state, String zip, String phone) {
         if (firstName == null || firstName.isEmpty())
             throw new IllegalArgumentException("First name cannot be empty");

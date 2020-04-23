@@ -1,7 +1,8 @@
 package GUI;
 
 import AddressBook.Person;
-//import com.sun.istack.internal.Nullable;
+// Removed so the program runs with the newest version of Java
+// import com.sun.istack.internal.Nullable;
 
 import javax.swing.*;
 import java.awt.*;

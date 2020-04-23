@@ -8,12 +8,11 @@ import java.util.List;
 public class AddressBook extends AbstractTableModel {
     private List<Person> persons = new ArrayList<>();
 
-   
     public Person[] getPersons() {
         return persons.toArray(new Person[persons.size()]);
     }
 
-  
+    // Add a person to the address book
     public void add(Person p) {
         int newIndex = persons.size();
         persons.add(p);
@@ -31,13 +30,13 @@ public class AddressBook extends AbstractTableModel {
         fireTableRowsUpdated(index, index);
     }
 
-  
+    // Remove a person from the address book
     public void remove(int index) {
         persons.remove(index);
         fireTableRowsDeleted(index, index);
     }
 
-   
+    // Get a person at a specific index
     public Person get(int index) {
         return persons.get(index);
     }
@@ -53,24 +52,24 @@ public class AddressBook extends AbstractTableModel {
         persons.clear();
     }
 
-  
+    // Get the row count of the AddressBook
     @Override
     public int getRowCount() {
         return persons.size();
     }
 
-  
+    // Get the column count of Person
     public int getColumnCount() {
         return Person.fields.length;
     }
 
-
+    // Get a field from a person in the address book
     @Override
     public Object getValueAt(int row, int column) {
         return persons.get(row).getField(column);
     }
 
-   
+   // Get the name of a field in the Person class
     @Override
     public String getColumnName(int column) {
         return Person.fields[column];
